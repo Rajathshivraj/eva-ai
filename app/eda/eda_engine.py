@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from typing import Dict, Any, List
+from app.eda.recommendation_engine import generate_recommendations
 
 def analyze_dataframe(df: pd.DataFrame) -> Dict[str, Any]:
     """
@@ -98,6 +99,16 @@ def analyze_dataframe(df: pd.DataFrame) -> Dict[str, Any]:
         "duplicate_row_count": duplicate_row_count
     }
 
+    # Feature engineering suggestions
+    recommendations = generate_recommendations(
+        df=df,
+        missing_percent=missing_percent,
+        categorical_unique_counts=categorical_unique_counts,
+        numeric_summary=numeric_summary,
+        data_quality_warnings=data_quality_warnings,
+        target_candidates=target_candidates
+    )
+
     return {
         "null_counts": null_counts,
         "missing_percent": missing_percent,
@@ -106,5 +117,6 @@ def analyze_dataframe(df: pd.DataFrame) -> Dict[str, Any]:
         "correlation_matrix": correlation_matrix,
         "strong_correlations": strong_correlations,
         "target_candidates": target_candidates,
-        "data_quality_warnings": data_quality_warnings
+        "data_quality_warnings": data_quality_warnings,
+        "feature_engineering_suggestions": recommendations
     }

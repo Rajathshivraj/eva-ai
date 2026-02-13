@@ -1,0 +1,21 @@
+2026-02-13 14:00:49,991 - httpx - INFO - HTTP Request: POST http://testserver/api/v1/data/upload "HTTP/1.1 200 OK"
+{
+  "drop_columns": [
+    "high_card",
+    "const_col",
+    "heavy_miss"
+  ],
+  "impute_columns": {
+    "mid_miss": "mean"
+  },
+  "encode_columns": [
+    "category"
+  ],
+  "normalize_columns": [
+    "price",
+    "cost",
+    "mid_miss"
+  ],
+  "potential_target": "label"
+}
+test_recommendations PASSED
