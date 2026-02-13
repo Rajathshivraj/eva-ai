@@ -27,6 +27,13 @@ def test_upload_csv():
     assert data['summary']['rows'] == 3
     assert data['summary']['columns'] == 2
     assert data['summary']['column_names'] == ['A', 'B']
+    
+    # Verify EDA stats
+    assert data['summary']['null_counts']['A'] == 0
+    assert data['summary']['missing_percent']['A'] == 0.0
+    assert data['summary']['numeric_summary']['A']['min'] == 1.0
+    assert data['summary']['numeric_summary']['A']['max'] == 3.0
+    assert data['summary']['categorical_unique_counts']['B'] == 3
 
 def test_upload_invalid_extension():
     files = {'file': ('test.txt', io.BytesIO(b"some text"), 'text/plain')}

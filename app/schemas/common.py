@@ -11,6 +11,10 @@ class CSVSummary(BaseModel):
     columns: int
     column_names: List[str]
     dtypes: Dict[str, str]
+    null_counts: Dict[str, int]
+    missing_percent: Dict[str, float]
+    numeric_summary: Dict[str, Dict[str, float]]
+    categorical_unique_counts: Dict[str, int]
 
 class UploadResponse(BaseModel):
     filename: str
