@@ -12,6 +12,7 @@ def analyze_dataframe(df: pd.DataFrame) -> Dict[str, Any]:
     - Correlation matrix (numeric columns)
     - Strong correlations (|corr| >= 0.8, no self-pairs, no duplicates)
     - Target candidates (classification vs regression)
+    - Data quality warnings
     """
     # Null counts and missing percentage
     null_counts = df.isnull().sum().to_dict()
@@ -80,6 +81,23 @@ def analyze_dataframe(df: pd.DataFrame) -> Dict[str, Any]:
         "regression_candidates": regression_candidates
     }
 
+    # Data quality warnings
+    constant_columns = [col for col in df.columns if df[col].nunique() <= 1]
+    high_missing_columns = [col for col, pct in missing_percent.items() if pct > 70]
+    high_cardinality_columns = []
+    if not categorical_df.empty and total_rows > 0:
+        for col in categorical_df.columns:
+            if categorical_df[col].nunique() / total_rows > 0.5:
+                high_cardinality_columns.append(col)
+    duplicate_row_count = int(df.duplicated().sum())
+
+    data_quality_warnings = {
+        "constant_columns": constant_columns,
+        "high_missing_columns": high_missing_columns,
+        "high_cardinality_columns": high_cardinality_columns,
+        "duplicate_row_count": duplicate_row_count
+    }
+
     return {
         "null_counts": null_counts,
         "missing_percent": missing_percent,
@@ -87,5 +105,6 @@ def analyze_dataframe(df: pd.DataFrame) -> Dict[str, Any]:
         "categorical_unique_counts": categorical_unique_counts,
         "correlation_matrix": correlation_matrix,
         "strong_correlations": strong_correlations,
-        "target_candidates": target_candidates
+        "target_candidates": target_candidates,
+        "data_quality_warnings": data_quality_warnings
     }

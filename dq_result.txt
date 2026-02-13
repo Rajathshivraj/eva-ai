@@ -1,0 +1,3 @@
+2026-02-13 13:46:12,987 - httpx - INFO - HTTP Request: POST http://testserver/api/v1/data/upload "HTTP/1.1 200 OK"
+Warnings: {'constant_columns': ['const_col', 'high_miss'], 'high_missing_columns': ['high_miss'], 'high_cardinality_columns': ['cat_hi_card'], 'duplicate_row_count': 1}
+test_data_quality PASSED

@@ -18,6 +18,7 @@ class CSVSummary(BaseModel):
     correlation_matrix: Dict[str, Dict[str, float]]
     strong_correlations: List[Dict[str, Any]]
     target_candidates: Dict[str, List[str]]
+    data_quality_warnings: Dict[str, Any]
 
 class UploadResponse(BaseModel):
     filename: str
