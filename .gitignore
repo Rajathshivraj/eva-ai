@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+debug_output.txt
+data/uploads/
+
+# Runtime / debug files
+output.log
+result.txt
+tmp_verify.py
+verify_result.txt
