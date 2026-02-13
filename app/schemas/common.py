@@ -15,6 +15,9 @@ class CSVSummary(BaseModel):
     missing_percent: Dict[str, float]
     numeric_summary: Dict[str, Dict[str, float]]
     categorical_unique_counts: Dict[str, int]
+    correlation_matrix: Dict[str, Dict[str, float]]
+    strong_correlations: List[Dict[str, Any]]
+    target_candidates: Dict[str, List[str]]
 
 class UploadResponse(BaseModel):
     filename: str

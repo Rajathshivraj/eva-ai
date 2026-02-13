@@ -1,3 +1,2 @@
-2026-02-13 12:45:45,691 - httpx - INFO - HTTP Request: POST http://testserver/api/v1/data/upload "HTTP/1.1 200 OK"
-EDA Summary Received: {'rows': 3, 'columns': 2, 'column_names': ['A', 'B'], 'dtypes': {'A': 'int64', 'B': 'str'}, 'null_counts': {'A': 0, 'B': 0}, 'missing_percent': {'A': 0.0, 'B': 0.0}, 'numeric_summary': {'A': {'mean': 2.0, 'std': 1.0, 'min': 1.0, 'max': 3.0}}, 'categorical_unique_counts': {'B': 3}}
-test_upload_csv PASSED
+2026-02-13 13:27:08,926 - httpx - INFO - HTTP Request: POST http://testserver/api/v1/data/upload "HTTP/1.1 200 OK"
+test_extended_eda PASSED
